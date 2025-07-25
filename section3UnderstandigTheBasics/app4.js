@@ -37,7 +37,7 @@ const server = http.createServer((req,res) => {
             'Content-Type': 'text/html'
         });
         */
-        res.statusCode = 302; // establece un codigo de estado http(302 indica que la pagina due encontrada pero el cliente debe 
+        res.statusCode = 302; // establece un codigo de estado http(302 indica que la pagina fue encontrada pero el cliente debe 
         // hacer una redireccion temporal)
         res.setHeader('Location', '/'); // este header, indica la locacion a donde el cliente debe ser redirigido
         // en este caso es una ruta relativa, pero podria ser una ruta absoluta como 

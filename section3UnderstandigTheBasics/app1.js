@@ -16,7 +16,7 @@ function rqListener(req, res) {
 // y como segundo parametro el response
 //http.createServer(rqListener) 
 
-// y tambien calramente podemos asignar esta funcion en formato de arrow function
+// y tambien podemos asignar esta funcion en formato de arrow function
 const server = http.createServer((req,res) => { // Create server nos retorna un servidor, y lo debemos almacenar en una constante 
     console.log(req);
 });
