@@ -1,7 +1,7 @@
 {
-  "name": "codigoseccionanterior",
+  "name": "tarea",
   "version": "1.0.0",
-  "description": "un codigo de la seccion anterior que utilizo para probar las cosas de esta seccion ",
+  "description": "es una breve tareaque me dio el instructor del curso",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

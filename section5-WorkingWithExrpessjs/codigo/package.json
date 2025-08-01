@@ -1,0 +1,22 @@
+{
+  "name": "codigo",
+  "version": "1.0.0",
+  "description": "un codigo de la seccion anterior que utilizo para probar las cosas de esta seccion ",
+  "main": "app.js",
+  "scripts": {
+    "2": "nodemon app2.js",
+    "3": "nodemon app3.js",
+    "4": "nodemon app4.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Mateo Brizuela",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0"
+  }
+}

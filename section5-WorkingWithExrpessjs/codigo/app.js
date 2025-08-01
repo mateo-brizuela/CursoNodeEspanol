@@ -22,5 +22,6 @@ app.use((req,res,next)=>{
     res.send('<h1>Hello from express!!!</h1>');
 });
 
-const server = http.createServer(app); // app es un manejador(handler) valido  para el servidor, asi que se puede usar
-server.listen(3000);
+//const server = http.createServer(app); // app es un manejador(handler) valido  para el servidor, asi que se puede usar
+//server.listen(3000);
+app.listen(3000); // podemos reemplazar las dos lineas de arriba por esta, que significa lo mismo cuando usamos express
