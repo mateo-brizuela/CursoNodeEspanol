@@ -1,4 +1,4 @@
-// node packages
+// node modules
 const http = require('http');
 const path = require('path');
 
@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 // my packages
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
-const rootDir = require('./utils/path'); // usamos la direccion de la raiz del proyecto reutilizable
+const rootDir = require('./utils/path');
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
