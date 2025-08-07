@@ -36,9 +36,15 @@ const path = require('path');
 // Versión nueva recomendada:
 module.exports = path.dirname(require.main.filename);
 
-    require.main.filename te da la ruta completa del archivo que inició tu aplicación (normalmente app.js).
+hace lo siguiente:
 
-    path.dirname(...) extrae solo el directorio contenedor de ese archivo.
+    require.main hace referencia al módulo principal que inició la aplicación, es decir, el archivo que ejecutaste con node, como por ejemplo app.js.
+
+    .filename te da la ruta completa de ese archivo principal (por ejemplo: /Users/mauro/proyecto/app.js).
+
+    path.dirname(...) toma esa ruta completa y devuelve solo la carpeta que contiene ese archivo, es decir, la carpeta raíz de tu aplicación (/Users/mauro/proyecto).
+
+Entonces, esta línea te permite exportar la ruta raíz de tu proyecto desde cualquier archivo (como desde utils/path.js) sin importar dónde esté ese archivo.
 
 👉 Entonces module.exports devuelve la ruta al directorio raíz del proyecto.
 📥 3. Usar ese helper en tus rutas

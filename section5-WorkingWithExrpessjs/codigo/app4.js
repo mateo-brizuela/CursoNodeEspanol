@@ -14,6 +14,10 @@ const rootDir = require('./utils/path'); // usamos la direccion de la raiz del p
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 
+// estamos estableciendo un middleware, pero le pasamos un objeto estatico que queremos servir para que sea accesible desde 
+// el navegador y le pasamos como parametro la carpeta que uqeremos que sea accesible atravez del navegador
+app.use(express.static(path.join(rootDir,'public'))); 
+
 app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 

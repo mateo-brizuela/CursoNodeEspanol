@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Usuario</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="stylesheet" href="/css/estiloUsuarios.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Mi Sitio</div>
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/admin/users">Usuarios</a></li>
+        <li><a href="/admin/add-user">Agregar Usuario</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Agregar nuevo usuario</h1>
+    <form action="/admin/add-user" method="POST" class="formulario">
+      <input type="text" name="user-name" placeholder="Ingrese el nombre de usuario" required>
+      <button type="submit">Agregar</button>
+    </form>
+  </main>
+</body>
+</html>
