@@ -3,7 +3,7 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Users
+    title #{docTitle}
     link(rel="stylesheet", href="/css/estilos.css")
     link(rel="stylesheet", href="/css/estiloUsuarios.css")
   body
@@ -14,15 +14,15 @@ html(lang="en")
           li
             a(href="/") Inicio
           li
-            a(href="/admin/users") Usuarios
+            a(href="/users") Usuarios
           li
             a(href="/admin/add-user") Agregar Usuario
+
     main.usuarios-container
-      h1 Usuarios Registrados
-      .usuarios-grid
-        .usuario-card Ana
-        .usuario-card Bruno
-        .usuario-card Carlos
-        .usuario-card Diana
-        .usuario-card Esteban
-        .usuario-card Florencia
+      if users.length > 0
+        h1 Usuarios Registrados
+        .usuarios-grid
+          each user in users
+            .usuario-card #{user.name}
+      else 
+        h1 No users registered :(
