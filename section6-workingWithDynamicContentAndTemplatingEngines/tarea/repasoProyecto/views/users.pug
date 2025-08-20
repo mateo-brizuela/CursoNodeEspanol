@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Users
+    link(rel="stylesheet", href="/css/estilos.css")
+    link(rel="stylesheet", href="/css/estiloUsuarios.css")
+  body
+    header
+      nav.navbar
+        .logo Mi Sitio
+        ul.nav-links
+          li
+            a(href="/") Inicio
+          li
+            a(href="/admin/users") Usuarios
+          li
+            a(href="/admin/add-user") Agregar Usuario
+    main.usuarios-container
+      h1 Usuarios Registrados
+      .usuarios-grid
+        .usuario-card Ana
+        .usuario-card Bruno
+        .usuario-card Carlos
+        .usuario-card Diana
+        .usuario-card Esteban
+        .usuario-card Florencia

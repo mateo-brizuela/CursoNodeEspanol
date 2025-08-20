@@ -1,0 +1,78 @@
+/* estilos.css */
+
+/* --- Modo oscuro base --- */
+:root {
+  --bg-color: #1e1e2f;
+  --text-color: #e0e0e0;
+  --accent-color: #a259ff; /* Violeta */
+  --card-bg: #2a2a40;
+  --hover-color: #7a37d8;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* --- Encabezado / Navbar --- */
+header {
+  background-color: #15151f;
+  padding: 16px 32px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-links li a:hover {
+  background-color: var(--hover-color);
+  color: white;
+}
+
+/* --- Contenido principal --- */
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+h1 {
+  color: var(--accent-color);
+}
+
+p {
+  font-size: 1.1rem;
+}
