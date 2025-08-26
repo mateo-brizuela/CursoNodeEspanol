@@ -20,7 +20,14 @@ router.get('/',(req,res,next)=>{
     // vamos a usar otro metodo para mandar el html dinamico llamado render
     // express va a usar el motor de plantillas por defecto  y va a retornar la plantilla
     // por otro lado el path ya esta configurado a la carpeta views, solo tenemos que escribir el nombre de la plantilla 
-    res.render('shop.pug',{prods: products, docTitle: 'shop'});
+    res.render('shop',{
+        prods: products, 
+        pageTitle: 'shop', 
+        path: '/', 
+        hasProducts: products.length > 0,
+        productsCSS: true,
+        activeShop: true
+    });
 });
 
 module.exports = router;

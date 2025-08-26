@@ -1,0 +1,95 @@
+/* main.css */
+
+/* Variables de color */
+:root {
+  --bg-dark: #121212;        /* fondo oscuro */
+  --bg-light: #1e1e1e;       /* fondo un poco más claro */
+  --text-light: #e0e0e0;     /* texto claro */
+  --accent-green: #4ade80;   /* verde suave y agradable */
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Encabezado y navegación */
+/* Navbar general */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--bg-light);
+  border-bottom: 2px solid var(--accent-green);
+}
+
+/* Logo / título */
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--accent-green);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.logo span {
+  color: var(--text-light);
+  font-weight: 900;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navegación */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover y link activo */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent-green);
+  transform: translateY(-2px);
+}
+
+/* Contenido */
+main {
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  color: var(--accent-green);
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--accent-green);
+  font-size: 0.9rem;
+}

@@ -11,7 +11,13 @@ const products = []; // hacemos un arreglo en el que almacenamos los productos q
 
 
 router.get('/add-product',(req,res,next)=>{
-    res.sendFile(path.join(rootDir,'views','add-product.html'));
+    res.render('add-product',{
+        pageTitle: 'Add Product', 
+        path: '/admin/add-product',
+        formCSS: true,
+        productsCSS: true,
+        activeAddProduct: true
+    });
 });
 
 router.post('/add-product',(req,res,next)=>{

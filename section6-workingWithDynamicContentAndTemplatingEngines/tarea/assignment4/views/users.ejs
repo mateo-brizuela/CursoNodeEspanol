@@ -1,0 +1,26 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/users.css">
+</head>
+
+<body>
+  <%- include('includes/navigation.ejs') %>
+
+  <main class="content">
+    <section class="users-intro">
+      <h1>Usuarios Registrados</h1>
+      <p>
+        Aquí podés ver los <strong>nombres de usuario</strong> que están registrados en la aplicación.
+      </p>
+    </section>
+
+    <section class="users-grid">
+      <% if (users.length > 0) { %>
+        <% for (const u of users) { %>
+          <div class="user-card"><%= u.name || u %></div>
+        <% } %>
+      <% } else { %>
+        <p>No hay usuarios registrados todavía.</p>
+      <% } %>
+    </section>
+  </main>
+</body>

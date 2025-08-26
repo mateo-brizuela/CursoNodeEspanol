@@ -1,0 +1,39 @@
+/* users.css */
+
+/* Intro */
+.users-intro {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.users-intro h1 {
+  color: var(--accent-green);
+  margin-bottom: 1rem;
+}
+
+/* Grid de usuarios */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Cada tarjeta */
+.user-card {
+  background-color: var(--bg-light);
+  border: 1px solid var(--accent-green);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-light);
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: default;
+}
+
+/* Hover para animar */
+.user-card:hover {
+  transform: scale(1.05);
+  background-color: rgba(74, 222, 128, 0.1); /* verde suave translúcido */
+}

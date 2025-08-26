@@ -1,0 +1,44 @@
+/* form.css */
+
+/* Contenedor de la sección */
+.form-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.form-section h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-green);
+}
+
+/* Formulario */
+.form-section form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-section input[type="text"] {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--accent-green);
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  width: 250px;
+}
+
+.form-section button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--accent-green);
+  color: var(--bg-dark);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-section button:hover {
+  background-color: #3ec46d;
+}

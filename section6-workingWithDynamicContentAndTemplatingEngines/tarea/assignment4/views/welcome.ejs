@@ -1,0 +1,31 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+  <%- include('includes/navigation.ejs') %>
+
+  <main class="content">
+    <section class="welcome-message">
+      <h1>¡Bienvenido!</h1>
+      <p>
+        Esta es la página de inicio de la aplicación.  
+        en la otra pagina podes ver los nombres de usuario registrados
+        Aca podes registrar los<strong>nombres de usuario</strong> además de esta bienvenida.
+      </p>
+    </section>
+
+    <section class="form-section">
+      <h2>Buscar usuario</h2>
+      <form action="/" method="POST">
+        <input 
+          type="text" 
+          name="userName" 
+          placeholder="Escribe un nombre de usuario..." 
+          required
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+</body>
