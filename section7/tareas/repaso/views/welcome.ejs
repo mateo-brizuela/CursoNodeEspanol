@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/welcome.css">
+</head>
+<body>
+    <%- include('includes/header') %>
+    
+    <main>
+        <section>
+            <h2>👋 ¡Hola! Bienvenido a tu Gestor de Tareas</h2>
+            
+            <h3>¿Qué querés hacer hoy?</h3>
+            
+            <div class="actions-grid">
+                <div class="action-card">
+                    <h4>➕ Agregar Nueva Tarea</h4>
+                    <p>Crea una nueva tarea pendiente y organízate mejor</p>
+                    <a href="/tasks/add-task">Ir a Agregar Tarea</a>
+                </div>
+                
+                <div class="action-card">
+                    <h4>📝 Ver Tareas Pendientes</h4>
+                    <p>Revisa tus tareas activas y mantente al día</p>
+                    <a href="/tasks/read-tasks">Ir a Tareas</a>
+                </div>
+                
+                <div class="action-card">
+                    <h4>✅ Ver Completadas</h4>
+                    <p>Mira tu progreso y celebra tus logros</p>
+                    <a href="/tasks/completed-tasks">Ver Completadas</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="tip-section">
+            <p><strong>💡 Tip:</strong> Andá a "Agregar Tarea" para crear tu primera tarea, 
+            luego a "Tareas" para verlas y marcarlas como completadas. ¡Cada tarea completada es un paso hacia tus objetivos!</p>
+        </section>
+    </main>
+
+    <%- include('includes/footer') %>
+</body>
+</html>

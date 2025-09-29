@@ -1,0 +1,159 @@
+/* Estilos para el header y navegación - Tema amarillo/violeta elegante */
+:root {
+    --dark-bg: #1a1625;
+    --dark-card: #2d2a3a;
+    --dark-text: #e0e0e0;
+    --dark-hover: #3a3548;
+    --accent-yellow: #ffd700;
+    --accent-yellow-light: #fff9c4;
+    --accent-yellow-dark: #fbc02d;
+    --accent-violet: #8b5cf6;
+    --accent-violet-light: #a78bfa;
+    --accent-violet-dark: #7c3aed;
+    --border-color: #3e3b4e;
+    --gradient-bg: linear-gradient(135deg, #1a1625 0%, #2d2a3a 100%);
+}
+
+header {
+    background: var(--gradient-bg);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--dark-text);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: var(--accent-yellow);
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark-text);
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+nav a:hover {
+    background-color: var(--dark-hover);
+    color: var(--accent-yellow);
+    transform: translateY(-2px);
+}
+
+/* Estilo para la flecha del dropdown */
+.dropdown-arrow {
+    font-size: 0.7rem;
+    color: var(--accent-violet-light);
+    transition: transform 0.3s ease;
+    margin-left: 0.3rem;
+}
+
+.dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+    color: var(--accent-yellow);
+}
+
+/* Dropdown styles - Controlado por JavaScript */
+.dropdown-content {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--dark-card);
+    min-width: 240px;
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
+    z-index: 1000;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-content.show {
+    display: block;
+    animation: fadeInUp 0.3s ease;
+}
+
+.dropdown-content a {
+    padding: 0.9rem 1.4rem;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-violet-dark) 100%);
+    color: white;
+    transform: translateX(5px);
+}
+
+.dropdown-content a::before {
+    content: "•";
+    color: var(--accent-yellow);
+    font-weight: bold;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo especial para el botón de agregar rápido */
+nav ul li:last-child a {
+    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
+    color: var(--dark-bg);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+nav ul li:last-child a:hover {
+    background: linear-gradient(135deg, var(--accent-yellow-dark) 0%, var(--accent-yellow) 100%);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}

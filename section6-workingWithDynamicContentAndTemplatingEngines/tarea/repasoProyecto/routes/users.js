@@ -6,7 +6,7 @@ const express = require('express');
 
 // my modules
 const rootDir = require('../utils/path');
-const importedUsers = require('./adminUsers');
+const usersController = require('../controllers/users');
 
 const { route } = require('./main');
 const { debug } = require('console');
@@ -14,9 +14,7 @@ const { debug } = require('console');
 
 const router = express.Router();
 
-router.get('/users',(req,res,next)=>{
-    res.render('users',{users: importedUsers.newUsers, docTitle: 'Users'});
-});
+router.get('/users',usersController.getUsers);
 
 module.exports = router;
 

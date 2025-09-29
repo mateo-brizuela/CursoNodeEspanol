@@ -1,0 +1,33 @@
+<footer>
+    <p>Gestor de Tareas &copy; 2025 - Organiza tu vida, alcanza tus metas</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownToggle = document.getElementById('dropdown-toggle');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const dropdownArrow = dropdownToggle?.querySelector('.dropdown-arrow');
+        let isOpen = false;
+
+        if (dropdownToggle && dropdownMenu && dropdownArrow) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                isOpen = !isOpen;
+                dropdownMenu.style.display = isOpen ? 'block' : 'none';
+                dropdownArrow.textContent = isOpen ? '▲' : '▼';
+            });
+
+            document.addEventListener('click', function() {
+                if (isOpen) {
+                    isOpen = false;
+                    dropdownMenu.style.display = 'none';
+                    dropdownArrow.textContent = '▼';
+                }
+            });
+
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+</script>

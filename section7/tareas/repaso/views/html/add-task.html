@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Tarea - Gestor de Tareas</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/base.css">    <!-- 👈 NUEVO BASE -->
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <!-- Header de navegación -->
+    <header>
+        <div class="header-container">
+            <h1>📋 Gestor de Tareas</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">🏠 Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" id="dropdown-toggle">
+                            📝 Tareas <span class="dropdown-arrow">▼</span>
+                        </a>
+                        <div class="dropdown-content" id="dropdown-menu">
+                            <a href="/tasks/read-tasks">📋 Ver Todas las Tareas</a>
+                            <a href="/tasks/add-task">➕ Agregar Tarea</a>
+                            <a href="/tasks/completed-tasks">✅ Tareas Completadas</a>
+                        </div>
+                    </li>
+                    <li><a href="/tasks/add-task">➕ Agregar Rápido</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="form-container">
+            <div class="form-card">
+                <h2 class="form-title">➕ Agregar Nueva Tarea</h2>
+                
+                <form action="/tasks/add-task" method="POST">
+                    <div class="form-group">
+                        <label for="title" class="form-label">📌 Título de la Tarea</label>
+                        <input 
+                            type="text" 
+                            id="title" 
+                            name="title" 
+                            class="form-input" 
+                            placeholder="Ej: Comprar víveres, Estudiar para el examen..."
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description" class="form-label">📝 Descripción</label>
+                        <textarea 
+                            id="description" 
+                            name="description" 
+                            class="form-textarea" 
+                            placeholder="Describe los detalles de tu tarea..."
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="/tasks/read-tasks" class="btn btn-secondary">← Volver a Tareas</a>
+                        <button type="submit" class="btn btn-primary">
+                            ✅ Guardar Tarea
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="form-help">
+                    <p>💡 <strong>Tip:</strong> Sé específico con el título y agrega detalles importantes en la descripción.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Gestor de Tareas &copy; 2025 - Organiza tu vida, alcanza tus metas</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownToggle = document.getElementById('dropdown-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const dropdownArrow = dropdownToggle.querySelector('.dropdown-arrow');
+            let isOpen = false;
+
+            dropdownToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                isOpen = !isOpen;
+                dropdownMenu.style.display = isOpen ? 'block' : 'none';
+                dropdownArrow.textContent = isOpen ? '▲' : '▼';
+            });
+
+            document.addEventListener('click', function() {
+                if (isOpen) {
+                    isOpen = false;
+                    dropdownMenu.style.display = 'none';
+                    dropdownArrow.textContent = '▼';
+                }
+            });
+
+            dropdownMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+</html>
