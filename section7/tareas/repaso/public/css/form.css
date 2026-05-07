@@ -1,18 +1,5 @@
-/* Estilos específicos para formularios - Tema amarillo/violeta */
-:root {
-    --dark-bg: #1a1625;
-    --dark-card: #2d2a3a;
-    --dark-text: #e0e0e0;
-    --dark-hover: #3a3548;
-    --accent-yellow: #ffd700;
-    --accent-yellow-light: #fff9c4;
-    --accent-yellow-dark: #fbc02d;
-    --accent-violet: #8b5cf6;
-    --accent-violet-light: #a78bfa;
-    --accent-violet-dark: #7c3aed;
-    --border-color: #3e3b4e;
-    --text-muted: #a0a0a0;
-}
+/* public/css/form.css */
+@import url('variables.css');
 
 .form-container {
     max-width: 600px;
@@ -38,7 +25,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-violet), var(--accent-yellow));
+    background: var(--gradient-hero);
 }
 
 .form-title {
@@ -110,7 +97,7 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
+    background: var(--gradient-yellow);
     color: var(--dark-bg);
 }
 

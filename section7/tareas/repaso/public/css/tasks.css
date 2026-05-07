@@ -1,0 +1,434 @@
+/* public/css/tasks.css */
+@import url('variables.css');
+
+.tasks-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tasks-header h2 {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+}
+
+.tasks-subtitle {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Estado vacío */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--dark-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.empty-state h3 {
+    color: var(--accent-yellow);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Contenedor de tareas */
+.tasks-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de tarea */
+.task-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.task-card:hover {
+    border-color: var(--accent-violet-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+.task-card.expanded {
+    border-color: var(--accent-violet);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+}
+
+/* Header de la tarjeta */
+.task-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-header:hover {
+    background-color: var(--dark-hover);
+}
+
+.task-main-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.task-number {
+    background: var(--gradient-violet);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.task-title {
+    margin: 0;
+    color: var(--accent-yellow);
+    font-size: 1.2rem;
+    font-weight: 500;
+    flex: 1;
+}
+
+.task-status {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+}
+
+.task-status.completed {
+    background-color: rgba(74, 222, 128, 0.1);
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+}
+
+.task-status.pending {
+    background-color: rgba(255, 215, 0, 0.1);
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
+}
+
+.toggle-details {
+    background: transparent;
+    border: 1px solid var(--accent-violet);
+    color: var(--accent-violet-light);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toggle-details:hover {
+    background: var(--accent-violet);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Detalles de la tarea */
+.task-details {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 0;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-description {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--dark-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.task-description strong {
+    color: var(--accent-yellow);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.task-description p {
+    margin: 0;
+    color: var(--dark-text);
+    line-height: 1.5;
+}
+
+.task-meta {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.task-meta small {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-form {
+    margin: 0;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-complete {
+    background: linear-gradient(135deg, var(--success-green) 0%, #22c55e 100%);
+    color: white;
+}
+
+.btn-complete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, var(--danger-red) 0%, #dc2626 100%);
+    color: white;
+}
+
+.btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.btn-primary {
+    background: var(--gradient-yellow);
+    color: var(--dark-bg);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--accent-yellow-dark) 0%, var(--accent-yellow) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Resumen de tareas */
+.tasks-summary {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--dark-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.tasks-summary p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.tasks-summary strong {
+    color: var(--accent-yellow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .task-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .task-main-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+    }
+    
+    .task-title {
+        font-size: 1.1rem;
+    }
+    
+    .toggle-details {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .task-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .tasks-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--dark-card);
+    margin: 15% auto;
+    padding: 0;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-violet-dark) 100%);
+    padding: 1.5rem;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.close {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+.modal-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+.modal-body p {
+    margin: 0 0 1rem 0;
+    color: var(--dark-text);
+    font-size: 1.1rem;
+}
+
+.task-to-delete {
+    color: var(--accent-yellow) !important;
+    font-weight: 600;
+    font-size: 1.2rem !important;
+    margin-top: 1rem !important;
+    padding: 1rem;
+    background: var(--dark-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.modal-actions {
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-actions .btn {
+    min-width: 120px;
+    padding: 0.8rem 1.5rem;
+}
+
+/* Responsive para el modal */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .modal-actions .btn {
+        width: 100%;
+    }
+}

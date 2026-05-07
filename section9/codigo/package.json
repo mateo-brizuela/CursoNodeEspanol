@@ -1,0 +1,20 @@
+{
+  "name": "section9",
+  "version": "1.0.0",
+  "description": "Section 9 code from Node.js course",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.4",
+    "ejs": "^2.7.4",
+    "express": "^4.22.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

@@ -1,18 +1,5 @@
-/* Estilos para el header y navegación - Tema amarillo/violeta elegante */
-:root {
-    --dark-bg: #1a1625;
-    --dark-card: #2d2a3a;
-    --dark-text: #e0e0e0;
-    --dark-hover: #3a3548;
-    --accent-yellow: #ffd700;
-    --accent-yellow-light: #fff9c4;
-    --accent-yellow-dark: #fbc02d;
-    --accent-violet: #8b5cf6;
-    --accent-violet-light: #a78bfa;
-    --accent-violet-dark: #7c3aed;
-    --border-color: #3e3b4e;
-    --gradient-bg: linear-gradient(135deg, #1a1625 0%, #2d2a3a 100%);
-}
+/* public/css/header.css */
+@import url('variables.css');
 
 header {
     background: var(--gradient-bg);
@@ -86,7 +73,7 @@ nav a:hover {
 
 /* Dropdown styles - Controlado por JavaScript */
 .dropdown-content {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -121,7 +108,7 @@ nav a:hover {
 }
 
 .dropdown-content a:hover {
-    background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-violet-dark) 100%);
+    background: var(--gradient-violet);
     color: white;
     transform: translateX(5px);
 }
@@ -145,7 +132,7 @@ nav a:hover {
 
 /* Estilo especial para el botón de agregar rápido */
 nav ul li:last-child a {
-    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
+    background: var(--gradient-yellow);
     color: var(--dark-bg);
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);

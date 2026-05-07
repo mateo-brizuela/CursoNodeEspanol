@@ -1,18 +1,9 @@
-/* Estilos base para toda la aplicación - Tema amarillo/violeta */
-:root {
-    --dark-bg: #1a1625;
-    --dark-card: #2d2a3a;
-    --dark-text: #e0e0e0;
-    --dark-hover: #3a3548;
-    --accent-yellow: #ffd700;
-    --accent-yellow-light: #fff9c4;
-    --accent-yellow-dark: #fbc02d;
-    --accent-violet: #8b5cf6;
-    --accent-violet-light: #a78bfa;
-    --accent-violet-dark: #7c3aed;
-    --border-color: #3e3b4e;
-    --text-muted: #a0a0a0;
-    --gradient-bg: linear-gradient(135deg, #1a1625 0%, #2d2a3a 100%);
+/* public/css/base.css */
+@import url('variables.css');
+
+/* Reset y estilos globales */
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -22,23 +13,32 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    line-height: 1.6;
 }
 
+/* Layout principal */
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    min-height: calc(100vh - 140px);
 }
 
+/* Footer global */
 footer {
     text-align: center;
     padding: 2rem;
     color: var(--text-muted);
     border-top: 1px solid var(--border-color);
-    margin-top: 3rem;
     background: var(--dark-hover);
 }
 
 footer p {
     margin: 0;
 }
+
+/* Utilidades globales */
+.text-center { text-align: center; }
+.text-muted { color: var(--text-muted); }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }

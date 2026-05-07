@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/tasks.css">
+</head>
+<body>
+    <%- include('includes/header') %>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="tasks-header">
+            <h2>📋 Todas tus Tareas</h2>
+            <p class="tasks-subtitle">Gestioná y organizá tus tareas pendientes</p>
+        </div>
+
+        <% if (tasks.length === 0) { %>
+            <div class="empty-state">
+                <div class="empty-icon">📝</div>
+                <h3>No tenés tareas creadas</h3>
+                <p>¡Empezá a organizarte creando tu primera tarea!</p>
+                <a href="/tasks/add-task" class="btn btn-primary">➕ Crear Primera Tarea</a>
+            </div>
+        <% } else { %>
+            <div class="tasks-container">
+                <% tasks.forEach(task => { %>
+                    <div class="task-card" data-task-id="<%= task.friendlyId %>">
+                        <div class="task-header" onclick="toggleTaskDetails('<%= task.friendlyId %>')">
+                            <div class="task-main-info">
+                                <span class="task-number">#<%= task.friendlyId %></span>
+                                <h3 class="task-title"><%= task.title %></h3>
+                                <span class="task-status <%= task.completed ? 'completed' : 'pending' %>">
+                                    <%= task.completed ? '✅ Completada' : '⏳ Pendiente' %>
+                                </span>
+                            </div>
+                            <button class="toggle-details" type="button">
+                                📋 <span>Ver detalles</span>
+                            </button>
+                        </div>
+                        
+                        <div class="task-details" id="details-<%= task.friendlyId %>">
+                            <div class="task-description">
+                                <strong>📝 Descripción:</strong>
+                                <p><%= task.description || 'Sin descripción' %></p>
+                            </div>
+                            <div class="task-meta">
+                                <small>📅 Creada: <%= new Date(task.createdAt).toLocaleDateString('es-AR') %></small>
+                            </div>
+                            <div class="task-actions">
+                                <% if (!task.completed) { %>
+                                    <form action="/tasks/complete-task/<%= task.friendlyId %>" method="POST" class="action-form">
+                                        <button type="submit" class="btn btn-complete">✅ Marcar como Completada</button>
+                                    </form>
+                                <% } %>
+                                <form action="/tasks/delete-task/<%= task.friendlyId %>" method="POST" class="action-form delete-form">
+                                    <button type="submit" class="btn btn-delete">🗑️ Eliminar Tarea</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <div class="tasks-summary">
+                <p><strong>Total:</strong> <%= tasks.length %> tarea<%= tasks.length !== 1 ? 's' : '' %> | 
+                   <strong>Completadas:</strong> <%= tasks.filter(t => t.completed).length %> | 
+                   <strong>Pendientes:</strong> <%= tasks.filter(t => !t.completed).length %>
+                </p>
+            </div>
+        <% } %>
+    </main>
+
+    <%- include('includes/footer') %>
+
+    <!-- Modal de confirmación -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🗑️ Confirmar Eliminación</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que querés eliminar la tarea?</p>
+                <p class="task-to-delete" id="taskToDelete"></p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelDelete">Cancelar</button>
+                <button class="btn btn-delete" id="confirmDelete">Sí, Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales para el modal
+        let currentTaskToDelete = null;
+        let currentDeleteForm = null;
+
+        function toggleTaskDetails(friendlyId) {
+            const details = document.getElementById('details-' + friendlyId);
+            const button = details.previousElementSibling.querySelector('.toggle-details');
+            const card = details.parentElement;
+            
+            if (details.style.display === 'none' || !details.style.display) {
+                details.style.display = 'block';
+                button.innerHTML = '📋 <span>Ocultar detalles</span>';
+                card.classList.add('expanded');
+            } else {
+                details.style.display = 'none';
+                button.innerHTML = '📋 <span>Ver detalles</span>';
+                card.classList.remove('expanded');
+            }
+        }
+
+        // Función para mostrar el modal de confirmación
+        function showDeleteModal(form, taskId, taskTitle) {
+            currentTaskToDelete = taskId;
+            currentDeleteForm = form;
+            document.getElementById('taskToDelete').textContent = `"${taskTitle}"`;
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        // Función para cerrar el modal
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+            currentTaskToDelete = null;
+            currentDeleteForm = null;
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cerrar todos los acordeones al cargar
+            document.querySelectorAll('.task-details').forEach(details => {
+                details.style.display = 'none';
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('deleteModal');
+            const closeBtn = document.querySelector('.close');
+            const cancelBtn = document.getElementById('cancelDelete');
+            const confirmBtn = document.getElementById('confirmDelete');
+
+            // Cerrar modal con botones
+            closeBtn.onclick = closeDeleteModal;
+            cancelBtn.onclick = closeDeleteModal;
+
+            // Cerrar modal clickeando fuera
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    closeDeleteModal();
+                }
+            }
+
+            // Confirmar eliminación - VERSIÓN CORREGIDA
+            confirmBtn.onclick = function() {
+                if (currentTaskToDelete && currentDeleteForm) {
+                    closeDeleteModal(); // Cerrar el modal primero
+                    
+                    // Pequeño delay para la animación de cierre
+                    setTimeout(() => {
+                        // Usar el formulario que ya tenemos guardado
+                        currentDeleteForm.submit();
+                    }, 200);
+                }
+            }
+
+            // Prevenir el envío normal del formulario y mostrar modal en su lugar
+            document.querySelectorAll('.delete-form').forEach(form => {
+                form.onsubmit = function(e) {
+                    e.preventDefault();
+                    const taskId = form.getAttribute('action').split('/').pop();
+                    const taskCard = form.closest('.task-card');
+                    const taskTitle = taskCard.querySelector('.task-title').textContent;
+                    showDeleteModal(form, taskId, taskTitle);
+                    return false;
+                };
+            });
+        });
+    </script>
+</body>
+</html>

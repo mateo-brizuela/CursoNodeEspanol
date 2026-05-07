@@ -1,0 +1,28 @@
+/* public/css/variables.css */
+:root {
+    /* Colores base */
+    --dark-bg: #1a1625;
+    --dark-card: #2d2a3a;
+    --dark-text: #e0e0e0;
+    --dark-hover: #3a3548;
+    --border-color: #3e3b4e;
+    --text-muted: #a0a0a0;
+    
+    /* Colores de acento */
+    --accent-yellow: #ffd700;
+    --accent-yellow-light: #fff9c4;
+    --accent-yellow-dark: #fbc02d;
+    --accent-violet: #8b5cf6;
+    --accent-violet-light: #a78bfa;
+    --accent-violet-dark: #7c3aed;
+    
+    /* Colores de estado */
+    --success-green: #4ade80;
+    --danger-red: #ef4444;
+    
+    /* Gradientes */
+    --gradient-bg: linear-gradient(135deg, #1a1625 0%, #2d2a3a 100%);
+    --gradient-hero: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-yellow) 100%);
+    --gradient-yellow: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
+    --gradient-violet: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-violet-dark) 100%);
+}
